@@ -99,16 +99,25 @@ class SortingRobot:
         # check to see if there is an item
         # create loop
         for i in self._list:
+            # check if possible to move right
+            # check for value of held item
+            
             if self.can_move_right() and self.compare_item() is None or self.compare_item() == 1:
+                # swap None for item
                 self.swap_item()
             self.move_right()
+        # traverse backwards
         while self.can_move_left():
             self.move_left()
+            # stop if back to where None was dropped
             if self._list[self._position] == None:
+                # pick up None
                 self.swap_item()
+                # increment to the right
                 self.move_right()
+                # create recursive case
                 self.sort()
-        self.swap_item()
+        
 
 if __name__ == "__main__":
     # Test our your implementation from the command line
