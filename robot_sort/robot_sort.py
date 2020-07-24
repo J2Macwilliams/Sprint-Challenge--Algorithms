@@ -97,23 +97,18 @@ class SortingRobot:
         Sort the robot's list.
         """
         # check to see if there is an item
-        if self.compare_item() is None:
-            self.set_light_on()
-        if self.light_is_on()
-            self.swap_item()
-            self.set_light_off()
         # create loop
-        if self.can_move_right():
-            
-            if self.compare_item() == 1:
+        for i in self._list:
+            if self.can_move_right() and self.compare_item() is None or self.compare_item() == 1:
                 self.swap_item()
-            if self.compare_item() == -1:
+            self.move_right()
+        while self.can_move_left():
+            self.move_left()
+            if self._list[self._position] == None:
+                self.swap_item()
                 self.move_right()
-            self.sort()
-            
-            
-        
-
+                self.sort()
+        self.swap_item()
 
 if __name__ == "__main__":
     # Test our your implementation from the command line
